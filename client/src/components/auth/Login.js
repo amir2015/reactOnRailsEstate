@@ -1,11 +1,14 @@
 import React, { useContext, useState } from "react";
 import { Form } from "semantic-ui-react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
+  const { handleLogin } = useContext(AuthContext);
+
   const [user, setUser] = useState({ email: "", password: "" });
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("login")
+    handleLogin(user);
     setUser({ email: "", password: "" });
   };
   return (

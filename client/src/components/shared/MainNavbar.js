@@ -1,14 +1,14 @@
-import React, { useContext, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Menu } from "semantic-ui-react";
-// import { AuthConsumer } from "../providers/AuthProvider";
-// import { AuthContext } from "../providers/AuthProvider";
+import { AuthContext } from "../../providers/AuthProvider";
+import React, { useContext } from "react";
 
-const MainNavbar = ({}) => {
-  const { pathname } = useLocation();
-
+export const MainNavbar = () => {
+  const { authenticated, testingValue, handleLogout, user } =
+    useContext(AuthContext);
+  console.log(testingValue, "testing value");
+  console.log(authenticated);
   const getRightNav = () => {
-    const user = null;
     if (user) {
       console.log("I am authenticated");
       return (
@@ -16,7 +16,7 @@ const MainNavbar = ({}) => {
           <Link to="/update_profile">
             <Menu.Item>Profile</Menu.Item>
           </Link>
-          <Menu.Item onClick={() => console.log("log out")}>Logout</Menu.Item>
+          <Menu.Item onClick={() => handleLogout()}>Logout</Menu.Item>
         </Menu.Menu>
       );
     } else {
@@ -24,10 +24,10 @@ const MainNavbar = ({}) => {
       return (
         <Menu.Menu position="right">
           <Link to="/register">
-            <Menu.Item active={pathname === "/register"}>Register</Menu.Item>
+            <Menu.Item>Register</Menu.Item>
           </Link>
           <Link to="/login">
-            <Menu.Item active={pathname === "/login"}>Login</Menu.Item>
+            <Menu.Item>Login</Menu.Item>
           </Link>
         </Menu.Menu>
       );
@@ -36,7 +36,7 @@ const MainNavbar = ({}) => {
   return (
     <Menu pointing secondary>
       <Link to="/">
-        <Menu.Item active={pathname === "/"}>Home</Menu.Item>
+        <Menu.Item>Home</Menu.Item>
       </Link>
       {getRightNav()}
     </Menu>

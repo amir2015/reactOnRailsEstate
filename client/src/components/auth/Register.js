@@ -1,23 +1,23 @@
 import { Button, Form } from "react-bootstrap";
 import React, { useContext, useState } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Register = () => {
-  // const [user, setUser] = useState({
-  //   email: "",
-  //   password: "",
-  //   passwordConfirm: "",
-  // });
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const { handleRegister } = useContext(AuthContext);
+
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+    passwordConfirm: "",
+  });
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if (user.password === user.passwordConfirm) {
-    //   setUser({ email: "", password: "" });
-    // } else {
-    //   alert("Passwords Do not match!");
-    // }
-    console.log("register");
+    if (user.password === user.passwordConfirm) {
+      handleRegister(user);
+      setUser({ email: "", password: "" });
+    } else {
+      alert("Passwords Do not match!");
+    }
   };
   return (
     <div className="d-flex flex-column align-items-center m-5">
@@ -28,8 +28,8 @@ const Register = () => {
           <Form.Control
             type="email"
             placeholder="Enter Email"
-            // value={user.email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={user.email}
+            onChange={(e) => setUser({ ...user, email: e.target.value })}
             autoFocus
             // required
           />
@@ -39,9 +39,9 @@ const Register = () => {
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
-            placeholder="PasswordConfirm"
-            // value={user.passwordConfirm}
-            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+            value={user.password}
+            onChange={(e) => setUser({ ...user, password: e.target.value })}
             // required
           />
         </Form.Group>
@@ -50,7 +50,10 @@ const Register = () => {
           <Form.Control
             type="password"
             placeholder="Password Confirm"
-            onChange={(e) => setPasswordConfirm(e.target.value)}
+            value={user.passwordConfirm}
+            onChange={(e) =>
+              setUser({ ...user, passwordConfirm: e.target.value })
+            }
             // required
           />
         </Form.Group>

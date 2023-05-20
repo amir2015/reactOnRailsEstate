@@ -40,8 +40,8 @@ const AuthProvider = ({ children }) => {
         handleLogin: handleLogin,
         handleLogout: handleLogout,
         testingValue: "testValueeeee",
-        authenitcated: user !== null,
-        setUser: (user) => setUser({ user }),
+        authenticated: user !== null,
+        setUser: (user) => setUser(user),
       }}
     >
       {children}
