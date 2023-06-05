@@ -4,6 +4,7 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import MainNavbar from "./components/shared/MainNavbar";
 import FetchUser from "./components/auth/FetchUser";
+import Available from "./components/pages/Available";
 function App() {
   return (
     <>
@@ -14,6 +15,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/available" element={<Available />} />
           </Routes>
         </>
       </FetchUser>

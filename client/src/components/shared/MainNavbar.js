@@ -1,7 +1,5 @@
-import { Link } from "react-router-dom";
-import { Menu } from "semantic-ui-react";
 import { AuthContext } from "../../providers/AuthProvider";
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -17,21 +15,16 @@ export const MainNavbar = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto"></Nav>
             <Nav>
-              <NavDropdown title="Profile" id="collasible-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">
-                  {" "}
-                  <Link style={{ textDecoration: "none" }} to="/update_profile">
-                    <Menu.Item>Profile</Menu.Item>
-                  </Link>
+              <NavDropdown title={user.email} id="navbarScrollingDropdown">
+                <NavDropdown.Item href="/update_profile">
+                  Profile
                 </NavDropdown.Item>
-                <NavDropdown.Item>
-                  <Link
-                    style={{ textDecoration: "none" }}
-                    to="/"
-                    onClick={() => handleLogout()}
-                  >
-                    Logout
-                  </Link>
+                <NavDropdown.Item
+                  href="#action4"
+                  onClick={() => handleLogout()}
+                >
+                  {" "}
+                  Log Out
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
@@ -41,26 +34,19 @@ export const MainNavbar = () => {
     } else {
       console.log("Not authenticated");
       return (
-        <Menu.Menu position="right">
-          <Link style={{ textDecoration: "none" }} to="/register">
-            <Menu.Item>Register</Menu.Item>
-          </Link>
-          <Link style={{ textDecoration: "none" }} to="/login">
-            <Menu.Item>Login</Menu.Item>
-          </Link>
-        </Menu.Menu>
+        <NavDropdown title="Join Us" id="navbarScrollingDropdown">
+          <NavDropdown.Item href="/register">Register</NavDropdown.Item>
+          <NavDropdown.Item href="/login">Login</NavDropdown.Item>
+        </NavDropdown>
       );
     }
   };
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" light bgColor="light">
+      <Navbar collapseOnSelect bg="light" variant="light">
         <Container>
-          <Navbar.Brand>
-            <Link style={{ textDecoration: "none" }} to="/">
-              RoR-Gaming
-            </Link>
-          </Navbar.Brand>
+          <Navbar.Brand href="/">RoR-Estate</Navbar.Brand>
+          <Nav.Link href="/available">Available</Nav.Link>
           {getRightNav()}
         </Container>
       </Navbar>
