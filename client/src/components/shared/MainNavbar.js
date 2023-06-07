@@ -8,7 +8,6 @@ export const MainNavbar = () => {
   const { handleLogout, user } = useContext(AuthContext);
   const getRightNav = () => {
     if (user) {
-      console.log("I am authenticated");
       return (
         <>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -32,7 +31,6 @@ export const MainNavbar = () => {
         </>
       );
     } else {
-      console.log("Not authenticated");
       return (
         <NavDropdown title="Join Us" id="navbarScrollingDropdown">
           <NavDropdown.Item href="/register">Register</NavDropdown.Item>
