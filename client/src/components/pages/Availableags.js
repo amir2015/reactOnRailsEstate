@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
 
-const Available = () => {
+const Availableags = () => {
   const [agentProperties, setAgentProperties] = useState([]);
   const getAgentProperties = async () => {
     try {
@@ -15,7 +15,6 @@ const Available = () => {
   useEffect(() => {
     getAgentProperties();
   }, []);
-  // const dumarr = [1, 2, 3, 4, "arr", 6, 7, 7];
   const renderData = () => {
     return agentProperties.map((aP) => {
       console.log(aP);
@@ -27,7 +26,6 @@ const Available = () => {
             <td>{aP.first_name}</td>
             <td>{aP.email}</td>
             <td>{aP.price} $</td>
-            <td>{aP.city}</td>
             <td>{aP.beds}</td>
             <td>{aP.baths}</td>
             <td>{aP.sq_ft}</td>
@@ -44,15 +42,15 @@ const Available = () => {
       <div className="d-flex flex-column align-items-center m-5">
         <h2>Available Units</h2>
         <br />
-        <Table>
+        <Table striped bordered hover>
           <thead>
+            <th>Unit No</th>
             <tr>
               <th>Unit No</th>
               <th>Agent No</th>
               <th>Agent Name</th>
               <th>Agent Email</th>
               <th>Price</th>
-              <th>City</th>
               <th>Beds</th>
               <th>Baths</th>
               <th>SQ_FT</th>
@@ -68,4 +66,4 @@ const Available = () => {
   );
 };
 
-export default Available;
+export default Availableags;

@@ -5,6 +5,9 @@ import Register from "./components/auth/Register";
 import MainNavbar from "./components/shared/MainNavbar";
 import FetchUser from "./components/auth/FetchUser";
 import Available from "./components/pages/Available";
+import Cities from "./components/pages/Cities";
+import ShowProperties from "./components/pages/ShowProperties";
+import Availableags from "./components/pages/Availableags";
 function App() {
   return (
     <>
@@ -16,6 +19,9 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/available" element={<Available />} />
+            <Route path="/cities" element={<Cities />} />
+            <Route path="/units" element={<ShowProperties />} />
+            <Route path="/availableags" element={<Availableags />} />
           </Routes>
         </>
       </FetchUser>

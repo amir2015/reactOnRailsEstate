@@ -15,12 +15,12 @@ u2 = User.create(email:'test2@test.com', password:123456)
 
 # a hard coded array of strings(cities)
 cities = [
-    'Cairo',
-    'Alexandria',
-    'Aswan',
-    'Luxor',
-    'Siwa',
-    'Sharm',
+  'Sandy',
+  'Draper',
+  'SLC',
+  'Provo',
+  'Lehi',
+  'Bountiful',
   ]
 
   # 10 times create a 'Faker' Agent
@@ -69,8 +69,9 @@ cities = [
       street: Faker::Address.street_address,
       zip: Faker::Address.zip_code,
       city: cities.sample
-    )
+      )
     end
+    puts p
   end
 
 
