@@ -50,7 +50,7 @@ const Cities = () => {
       <>
         <br />
 
-        <Table>
+        <Table striped>
           <thead>
             <tr>
               <th>Unit No</th>

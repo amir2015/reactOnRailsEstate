@@ -7,7 +7,7 @@ import FetchUser from "./components/auth/FetchUser";
 import Available from "./components/pages/Available";
 import Cities from "./components/pages/Cities";
 import ShowProperties from "./components/pages/ShowProperties";
-import Availableags from "./components/pages/Availableags";
+import ShowAllUnits from "./components/pages/ShowAllUnits";
 function App() {
   return (
     <>
@@ -21,7 +21,7 @@ function App() {
             <Route path="/available" element={<Available />} />
             <Route path="/cities" element={<Cities />} />
             <Route path="/units" element={<ShowProperties />} />
-            <Route path="/availableags" element={<Availableags />} />
+            <Route path="/show" element={<ShowAllUnits />} />
           </Routes>
         </>
       </FetchUser>

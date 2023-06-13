@@ -44,15 +44,11 @@ export const MainNavbar = () => {
       <Navbar collapseOnSelect bg="light" variant="light">
         <Container>
           <Navbar.Brand href="/">RoR-Estate</Navbar.Brand>
-          {/* <Nav.Link href="/Units">Units </Nav.Link> */}
-          <Nav.Link href="/available">Available </Nav.Link>
-          <Nav.Link href="/cities" className="ml-5">
-            Cities{" "}
-          </Nav.Link>
-          {/* <Nav.Link href="/availableags" className="ml-5">
-            {" "}
-            Availableags
-          </Nav.Link> */}
+          <Nav className="me-auto">
+            <Nav.Link href="/available">Available </Nav.Link>
+            <Nav.Link href="/cities">Cities </Nav.Link>
+            <Nav.Link href="/show"> AllUnits</Nav.Link>
+          </Nav>
           {getRightNav()}
         </Container>
       </Navbar>
