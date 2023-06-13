@@ -8,6 +8,8 @@ import Available from "./components/pages/Available";
 import Cities from "./components/pages/Cities";
 import ShowProperties from "./components/pages/ShowProperties";
 import ShowAllUnits from "./components/pages/ShowAllUnits";
+import Footer from "./components/shared/Footer";
+
 function App() {
   return (
     <>
@@ -24,6 +26,7 @@ function App() {
             <Route path="/show" element={<ShowAllUnits />} />
           </Routes>
         </>
+        <Footer />
       </FetchUser>
     </>
   );
