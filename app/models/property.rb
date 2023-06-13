@@ -13,5 +13,10 @@ def self.available
     .where('properties.sold <> TRUE')
 end
 
+def self.city(city)
+  select("properties.id,price,baths,sq_ft,beds,a.city")
+  .joins("INNER JOIN addresses AS a ON properties.id=a.property_id")
+  .where("LOWER(a.city) = ? AND properties.sold <>?",city.downcase,true)
+end
 
 end

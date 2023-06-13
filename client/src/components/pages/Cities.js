@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useAxios from "axios-hooks";
 import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/Table";
+// import axios from "axios";
 
 const Cities = () => {
   const [filteredCities, setFilteredCities] = useState(null);
@@ -9,9 +10,12 @@ const Cities = () => {
   if (error) return <p>Error occured</p>;
   if (loading) return <p>loading</p>;
   const getUniqueCities = () => {};
-  const handleSelect = (e) => {
-    let selctedValue = e.target.value;
-    setFilteredCities(properties.filter((p) => p.city === selctedValue));
+  const handleSelect = async (e) => {
+    let selctedCity = e.target.value;
+    setFilteredCities(properties.filter((p) => p.city === selctedCity));
+    //Applying request through backend
+    // let res = await axios.get(`/api/properties/${selctedCity}`);
+    // setFilteredCities(res.data);
   };
   const renderSelect = () => {
     let uniqueCities = properties.reduce((acumm, d) => {

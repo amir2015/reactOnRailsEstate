@@ -1,7 +1,9 @@
 class Address < ApplicationRecord
   belongs_to :property
   def self.cities
-    select(" DISTINCT city ")
-
+    cities = select(" DISTINCT city ")
+    cities.map do |city|
+      city.city
+    end
   end
 end

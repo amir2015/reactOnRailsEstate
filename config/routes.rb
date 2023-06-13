@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     get '/properties/available', to:'properties#available'
     get '/properties/show', to:'properties#show'
     get '/properties/cities', to:'properties#cities'
+    get '/properties/:city', to:'properties#city'
+
 
   end
 end

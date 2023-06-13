@@ -45,9 +45,9 @@ export const MainNavbar = () => {
         <Container>
           <Navbar.Brand href="/">RoR-Estate</Navbar.Brand>
           <Nav className="me-auto">
+            <Nav.Link href="/show"> AllUnits</Nav.Link>
             <Nav.Link href="/available">Available </Nav.Link>
             <Nav.Link href="/cities">Cities </Nav.Link>
-            <Nav.Link href="/show"> AllUnits</Nav.Link>
           </Nav>
           {getRightNav()}
         </Container>

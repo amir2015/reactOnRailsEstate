@@ -10,4 +10,7 @@ class Api::PropertiesController < ApplicationController
   def cities
     render json: Address.cities
   end
+  def city
+    render json: Property.city(params[:city])
+  end
 end
