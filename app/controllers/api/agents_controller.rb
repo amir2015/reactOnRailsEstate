@@ -3,7 +3,7 @@ class Api::AgentsController < ApplicationController
     render json: Agent.unsold_homes
   end
 
-  def show
+  def show_buyers
     @agent = Agent.find(params[:id])
     render json: @agent.buyers
   end

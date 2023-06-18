@@ -9,6 +9,7 @@ import Cities from "./components/pages/Cities";
 import ShowProperties from "./components/pages/ShowProperties";
 import ShowAllUnits from "./components/pages/ShowAllUnits";
 import Footer from "./components/shared/Footer";
+import FindHomes from "./components/pages/FindHomes";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/cities" element={<Cities />} />
             <Route path="/units" element={<ShowProperties />} />
             <Route path="/show" element={<ShowAllUnits />} />
+            <Route path="/findhomes" element={<FindHomes />} />
           </Routes>
         </>
         <Footer />

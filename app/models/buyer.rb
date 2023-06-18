@@ -19,14 +19,15 @@ class Buyer < ApplicationRecord
 
 
   def self.my_homes(id,cities)
-select('buyers.first_name,max_price ,cities,buyers.agent_id,sq_ft ,city,price,sold')
-.joins("INNER JOIN agents AS a ON a.id = buyers.agent_id
-  INNER JOIN properties AS p ON p.agent_id = buyers.agent_id AND p.price < buyers.max_price
-  INNER JOIN addresses AS ad ON ad.property_id = p.id  AND ad.city = ANY ('{#{cities.join(',')}}')")
-.where("buyers.id = ? AND p.sold <> TRUE", id)
-
+    select('p.id, sq_ft, city, price')
+    .joins("INNER JOIN agents AS a ON a.id = buyers.agent_id
+     INNER JOIN properties AS p ON p.agent_id = buyers.agent_id AND p.price < buyers.max_price
+     INNER JOIN addresses AS ad ON ad.property_id = p.id  AND ad.city = ANY ('{#{cities.join(',')}}')")
+   .where("buyers.id = ? AND p.sold <> TRUE", id)
   end
 
-
+  def my_homes
+  {id:self.id, cities:self.cities, method_type:'instance'}
+end
 
 end

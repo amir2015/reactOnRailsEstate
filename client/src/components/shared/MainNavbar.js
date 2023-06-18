@@ -48,8 +48,10 @@ export const MainNavbar = () => {
             <Nav.Link href="/show"> AllUnits</Nav.Link>
             <Nav.Link href="/available">Available </Nav.Link>
             <Nav.Link href="/cities">Cities </Nav.Link>
+            <Nav.Link href="/findhomes">FindHomes </Nav.Link>
           </Nav>
-          {getRightNav()}
+          {
+          getRightNav()}
         </Container>
       </Navbar>
     </>
