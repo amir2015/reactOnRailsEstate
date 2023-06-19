@@ -15,12 +15,12 @@ u2 = User.create(email:'test2@test.com', password:123456)
 
 # a hard coded array of strings(cities)
 cities = [
-  'Sandy',
-  'Draper',
-  'SLC',
-  'Provo',
-  'Lehi',
-  'Bountiful',
+  'Alexandria',
+  'Aswan',
+  'Luxor',
+  'Cairo',
+  'Giza',
+  'Portsaied',
   ]
 
   # 10 times create a 'Faker' Agent

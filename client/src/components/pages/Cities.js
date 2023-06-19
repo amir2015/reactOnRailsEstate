@@ -2,20 +2,25 @@ import React, { useState } from "react";
 import useAxios from "axios-hooks";
 import Form from "react-bootstrap/Form";
 import Table from "react-bootstrap/Table";
-// import axios from "axios";
+import axios from "axios";
 
 const Cities = () => {
-  const [filteredCities, setFilteredCities] = useState(null);
   const [{ data: properties, loading, error }] = useAxios("/api/properties");
+  const [filteredCities, setFilteredCities] = useState(null);
+  const [totalPages, setTotalPages] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [selectedCity, setSelectedCity] = useState(1);
   if (error) return <p>Error occured</p>;
   if (loading) return <p>loading</p>;
   const getUniqueCities = () => {};
   const handleSelect = async (e) => {
-    let selctedCity = e.target.value;
-    setFilteredCities(properties.filter((p) => p.city === selctedCity));
-    //Applying request through backend
-    // let res = await axios.get(`/api/properties/${selctedCity}`);
+    setSelectedCity(e.target.value);
+    // setFilteredCities(properties.filter((p) => p.city === selctedCity));
     // setFilteredCities(res.data);
+    //Applying request through backend
+    let res = await axios.get(`/api/properties/${e.target.value}`);
+    setFilteredCities(res.data.properties);
+    setTotalPages(res.data.total_pages);
   };
   const renderSelect = () => {
     let uniqueCities = properties.reduce((acumm, d) => {
@@ -95,11 +100,53 @@ const Cities = () => {
       </>
     );
   };
+  const pageClicked = async (page) => {
+    let res = await axios.get(`/api/properties/${selectedCity}?page=${page}`);
+    setFilteredCities(res.data.properties);
+    setCurrentPage(page);
+    console.log(page, "page");
+  };
+  const getStyle = (page) => {
+    let pagingStyle = {
+      margin: "5px",
+      cursor: "pointer",
+      color: "black",
+      textDecoration: "underline",
+    };
+    if (currentPage === page) {
+      return { ...pagingStyle, color: "red" };
+    }
+  };
+  const renderPagination = () => {
+    if (!totalPages) {
+      return null;
+    } else {
+      let spans = [];
+      spans.push(<span style={{ margin: "5px" }}>{"prev"}</span>);
+      for (let i = 1; i <= totalPages; i++) {
+        spans.push(
+          <span
+            style={getStyle(i)}
+            onClick={() => {
+              pageClicked(i);
+            }}
+          >
+            &nbsp;
+            {i}
+          </span>
+        );
+      }
+      spans.push(<span style={{ margin: "5px" }}>{"next"}</span>);
+
+      return spans;
+    }
+  };
   return (
     <>
       <h3>{getSelect()}</h3>
       <div className="d-flex flex-column align-items-center m-5">
         <p>{renderFilteredCityProperties()}</p>
+        <span style={{ margin: "5px" }}>{renderPagination()}</span>
       </div>
     </>
   );
