@@ -34,4 +34,11 @@ def self.city(city)
   .where("LOWER(a.city) = ? AND properties.sold <>?",city.downcase,true)
 end
 
+
+def self.city_cost
+    select("DISTINCT city, STRING_AGG(CAST(price AS VARCHAR), ', ') as  prices, COUNT(*) price_count ")
+    .joins('INNER JOIN addresses AS ad ON properties.id = ad.property_id')
+    .where('properties.sold IS TRUE')
+    .group('city')
+end
 end
