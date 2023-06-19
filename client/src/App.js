@@ -10,6 +10,8 @@ import ShowProperties from "./components/pages/ShowProperties";
 import ShowAllUnits from "./components/pages/ShowAllUnits";
 import Footer from "./components/shared/Footer";
 import FindHomes from "./components/pages/FindHomes";
+import CityCost from "./components/pages/CityCost";
+import NoMatch from "./components/shared/NoMatch";
 
 function App() {
   return (
@@ -26,6 +28,9 @@ function App() {
             <Route path="/units" element={<ShowProperties />} />
             <Route path="/show" element={<ShowAllUnits />} />
             <Route path="/findhomes" element={<FindHomes />} />
+            <Route path="/city_cost" element={<CityCost />} />
+
+            <Route path="*" element={<NoMatch />} />
           </Routes>
         </>
         <Footer />

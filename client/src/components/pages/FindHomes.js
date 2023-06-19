@@ -115,11 +115,13 @@ const FindHomes = () => {
   };
 
   return (
-    <div className="d-flex flex-column align-items-center m-5">
+    <div className="d-flex flex-column align-items-center m-4">
       <h3>FindHomess</h3>
       {agents && renderAgentSelect()}
       {buyers && renderBuyerSelect()}
-      <div className="d-flex  align-items-center m-5">{renderProperties()}</div>
+      <div className="d-flex flex-row align-items-center m-4">
+        {renderProperties()}
+      </div>
     </div>
   );
 };

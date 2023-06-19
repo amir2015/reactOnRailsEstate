@@ -49,6 +49,7 @@ export const MainNavbar = () => {
             <Nav.Link href="/available">Available </Nav.Link>
             <Nav.Link href="/cities">Cities </Nav.Link>
             <Nav.Link href="/findhomes">FindHomes </Nav.Link>
+            <Nav.Link href="/city_cost">City Cost </Nav.Link>
           </Nav>
           {
           getRightNav()}
