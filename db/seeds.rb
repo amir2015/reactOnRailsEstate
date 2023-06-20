@@ -24,7 +24,7 @@ cities = [
   ]
 
   # 10 times create a 'Faker' Agent
-  10.times do
+  100.times do
     a = Agent.create(
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
@@ -33,7 +33,7 @@ cities = [
     )
 
     # For each Agent create 5 buyers
-    5.times do
+    50.times do
       # pick a radom number upto cites length -1
       num_cities = rand(1..cities.length - 1);
       Buyer.create(
@@ -48,7 +48,7 @@ cities = [
     end
 
     # For each Agent create 5 properties
-    5.times do
+    50.times do
       # sold will be false 2/3 of the time
       sold = rand(3).odd?
       price = rand(200000..1500000)
